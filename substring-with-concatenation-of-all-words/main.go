@@ -53,6 +53,9 @@ func findSubstring(s string, words []string) []int {
 			}
 		}
 		cursorPos++
+		if sLength-cursorPos < wordLength*numOfWords {
+			break
+		}
 	}
 	return res
 }
