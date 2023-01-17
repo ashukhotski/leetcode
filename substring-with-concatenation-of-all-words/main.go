@@ -27,11 +27,11 @@ func findSubstring(s string, words []string) []int {
 	}
 	cursorPos := 0
 	var res []int = []int{}
-	for cursorPos < sLength {
+	for cursorPos < sLength-wordLength*numOfWords+1 {
 		tmpWords := make([]string, numOfWords)
 		copy(tmpWords, words)
 		i := cursorPos
-		for i < sLength {
+		for i < i+wordLength*len(tmpWords)+1 {
 			isMatched := false
 			for j := 0; j < len(tmpWords); j++ {
 				if len(s) < i+wordLength {
@@ -53,9 +53,6 @@ func findSubstring(s string, words []string) []int {
 			}
 		}
 		cursorPos++
-		if sLength-cursorPos < wordLength*numOfWords {
-			break
-		}
 	}
 	return res
 }
